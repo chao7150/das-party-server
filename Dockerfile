@@ -12,7 +12,6 @@ COPY package.json yarn.lock ./
 RUN yarn install --production
 COPY --from=builder /usr/src/app/build ./build/
 
-HEALTHCHECK CMD curl -f http://localhost:3000/status || exit 1
-EXPOSE 3000
+EXPOSE 8080
 
 CMD yarn start
