@@ -19,6 +19,9 @@ wss.on("connection", (ws, req) => {
   }
 
   ws.on("message", (message) => {
+    if (message === "ping") {
+      ws.send("pong");
+    }
     clients[roomId].forEach((client) => {
       if (client.readyState !== ws.OPEN) {
         return undefined;
