@@ -1,11 +1,11 @@
-FROM node:latest AS builder
+FROM node:15.11.0-slim AS builder
 
 WORKDIR /usr/src/app
 COPY . ./
 RUN yarn install
 RUN yarn build
 
-FROM node:latest
+FROM node:15.11.0-alpine
 
 WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
